@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickleball Paddle Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Pickleball Paddle Store</h1>
+        <p>Buy or Rent High-Quality Pickleball Paddles</p>
+    </header>
+    
+    <section id="inventory">
+        <h2>Available Paddles</h2>
+        <table id="paddleTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Rental Price</th>
+                    <th>Description</th>
+                    <th>Stock</th>
+                    <th>Rented (Y/N)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Inventory data will be dynamically loaded here -->
+            </tbody>
+        </table>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <script>
+        async function loadInventory() {
+            const response = await fetch('inventory.json'); // Load inventory data
+            const data = await response.json();
+            const tableBody = document.querySelector('#paddleTable tbody');
+            tableBody.innerHTML = '';
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.type}</td>
+                    <td>$${item.price}</td>
+                    <td>$${item.rental_price}</td>
+                    <td>${item.description}</td>
+                    <td>${item.stock}</td>
+                    <td>${item.rented}</td>
+                    <td><button onclick="requestPaddle('${item.name}')">Request</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function requestPaddle(name) {
+            alert(`Request submitted for: ${name}`);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadInventory);
+    </script>
+</body>
+</html>
