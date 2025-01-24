@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
-function requestPaddle(name) {
-    alert(`Request submitted for: ${name}`);
+function requestPaddle(paddleName) {
+    const recipientEmail = "naqvi_sn@yahoo.com";
+    const subject = encodeURIComponent("Pickleball Paddle Request");
+    const body = encodeURIComponent(`Hello,\n\nI would like to request the paddle: ${paddleName}.\n\nThank you.`);
+    
+    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
 }
