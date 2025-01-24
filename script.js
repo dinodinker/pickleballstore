@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 <td>${item.description}</td>
                 <td>${item.stock}</td>
                 <td>${item.rented}</td>
-                <td><button onclick="requestPaddle('${item.name}')">Request</button></td>
+                <td>${item.notes || 'N/A'}</td>
             `;
             tableBody.appendChild(row);
         });
@@ -23,11 +23,3 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.error('Error loading inventory:', error);
     }
 });
-
-function requestPaddle(paddleName) {
-    const recipientEmail = "naqvi_sn@yahoo.com";
-    const subject = encodeURIComponent("Pickleball Paddle Request");
-    const body = encodeURIComponent(`Hello,\n\nI would like to request the paddle: ${paddleName}.\n\nThank you.`);
-    
-    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
-}
