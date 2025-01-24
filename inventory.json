@@ -12,7 +12,7 @@
         "name": "Spartus Olympus",
         "type": "Power",
         "price": 140,
-        "rental_price": 20,
+        "rental_price": 15,
         "description": "Powerful paddle with a strong carbon face.",
         "stock": 3,
         "rented": "Yes"
