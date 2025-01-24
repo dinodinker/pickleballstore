@@ -5,8 +5,9 @@
         "price": 120,
         "rental_price": 15,
         "description": "Lightweight control paddle with excellent spin.",
-        "stock": 5,
-        "rented": "No"
+        "stock": 1,
+        "rented": "No",
+        "notes": "Great for beginners"
     },
     {
         "name": "Spartus Olympus",
@@ -14,7 +15,8 @@
         "price": 140,
         "rental_price": 15,
         "description": "Powerful paddle with a strong carbon face.",
-        "stock": 3,
-        "rented": "Yes"
+        "stock": 1,
+        "rented": "Yes",
+        "notes": "Recommended for aggressive players"
     }
 ]
