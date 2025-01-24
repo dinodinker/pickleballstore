@@ -86,6 +86,9 @@ form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
 }
 
 p {
@@ -125,5 +128,10 @@ p {
 
     input, textarea {
         font-size: 14px;
+    }
+
+    form {
+        max-width: 100%;
+        padding: 10px;
     }
 }
