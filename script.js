@@ -8,39 +8,38 @@ document.addEventListener('DOMContentLoaded', async function() {
         const text = await response.text();
         const rows = text.split("\n").map(row => row.split(",")); // Parse CSV data
 
-        const tableBody = document.querySelector('#paddleTable tbody');
+        const table = document.querySelector('#paddleTable');
+        const tableHead = table.querySelector('thead');
+        const tableBody = table.querySelector('tbody');
+        
+        tableHead.innerHTML = '';
         tableBody.innerHTML = '';
 
-        // Ensure first row is treated as a header and removed
+        // Extract headers and create table headers
         const headers = rows[0].map(header => header.trim().replace(/"/g, ''));
-        const dataRows = rows.slice(1).filter(row => row.length >= headers.length); // Remove empty rows
+        const headerRow = document.createElement('tr');
+        headers.forEach(headerText => {
+            const th = document.createElement('th');
+            th.textContent = headerText;
+            headerRow.appendChild(th);
+        });
+        tableHead.appendChild(headerRow);
+
+        // Remove empty rows
+        const dataRows = rows.slice(1).filter(row => row.length >= headers.length);
 
         dataRows.forEach(rowData => {
             const cleanedRow = rowData.map(cell => cell.trim().replace(/"/g, ''));
-            const imageUrl = cleanedRow[headers.indexOf("Image URL")];
-            const name = cleanedRow[headers.indexOf("Name")];
-            const type = cleanedRow[headers.indexOf("Type")];
-            const condition = cleanedRow[headers.indexOf("Condition")];
-            const price = parseFloat(cleanedRow[headers.indexOf("Price")]).toFixed(2);
-            const rentalPrice = parseFloat(cleanedRow[headers.indexOf("Rental Price")]).toFixed(2);
-            const description = cleanedRow[headers.indexOf("Description")];
-            const stock = cleanedRow[headers.indexOf("Stock")];
-            const rented = cleanedRow[headers.indexOf("Rented")];
-            const notes = cleanedRow[headers.indexOf("Notes")];
-            
             const tableRow = document.createElement('tr');
-            tableRow.innerHTML = `
-                <td><img src="${imageUrl}" alt="${name}" style="width: 80px; height: auto; border-radius: 5px;"></td>
-                <td>${name}</td>
-                <td>${type}</td>
-                <td>${condition}</td>
-                <td>$${price}</td>
-                <td>$${rentalPrice}</td>
-                <td>${description}</td>
-                <td>${stock}</td>
-                <td>${rented}</td>
-                <td>${notes}</td>
-            `;
+            cleanedRow.forEach((cellData, index) => {
+                const td = document.createElement('td');
+                if (headers[index] === "Image URL") {
+                    td.innerHTML = `<img src="${cellData}" alt="Image" style="width: 80px; height: auto; border-radius: 5px;">`;
+                } else {
+                    td.textContent = cellData;
+                }
+                tableRow.appendChild(td);
+            });
             tableBody.appendChild(tableRow);
         });
     } catch (error) {
