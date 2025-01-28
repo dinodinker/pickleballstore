@@ -36,23 +36,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 if (headers[index] === "Image URL") {
                     let imageUrl = cellData;
                     if (imageUrl.includes("drive.google.com")) {
-                        const fileIdMatch = imageUrl.match(/[-\w]{25,}/);
-                        if (fileIdMatch) {
-                            let fileId = fileIdMatch[0];
-                            imageUrl = `https://lh3.googleusercontent.com/d/${fileId}=s220`; // Correct Google Image URL
+                        const fileId = imageUrl.match(/[-\w]{25,}/);
+                        if (fileId) {
+                            imageUrl = `https://drive.google.com/uc?export=view&id=${fileId[0]}`;
                         }
                     }
-
-                    // If no valid image, use placeholder
-                    if (!imageUrl || imageUrl === "N/A") {
-                        imageUrl = "https://via.placeholder.com/40";
-                    }
-
-                    td.innerHTML = `
-                        <img src="${imageUrl}" alt="Image" style="width: 40px; height: 40px; border-radius: 5px; cursor: pointer;" 
-                        onmouseover="this.style.width='200px'; this.style.height='200px';" 
-                        onmouseout="this.style.width='40px'; this.style.height='40px';">
-                    `;
+                    td.innerHTML = `<a href="${imageUrl}" target="_blank"><img src="${imageUrl}" alt="Image" style="width: 40px; height: 40px; border-radius: 5px; cursor: pointer;"></a>`;
                 } else {
                     td.textContent = cellData;
                 }
@@ -60,7 +49,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             });
             tableBody.appendChild(tableRow);
         });
-
     } catch (error) {
         console.error('Error loading Google Sheets data:', error);
     }
