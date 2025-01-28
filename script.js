@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const table = document.querySelector('#paddleTable');
         const tableHead = table.querySelector('thead');
         const tableBody = table.querySelector('tbody');
-        
+
         tableHead.innerHTML = '';
         tableBody.innerHTML = '';
 
@@ -31,17 +31,26 @@ document.addEventListener('DOMContentLoaded', async function() {
         dataRows.forEach(rowData => {
             const cleanedRow = rowData.map(cell => cell.trim().replace(/"/g, ''));
             const tableRow = document.createElement('tr');
+
             cleanedRow.forEach((cellData, index) => {
                 const td = document.createElement('td');
+
                 if (headers[index] === "Image") {
                     let imageUrl = cellData;
+
+                    // Convert Google Drive links to direct image links
                     if (imageUrl.includes("drive.google.com")) {
                         const fileIdMatch = imageUrl.match(/[-\w]{25,}/);
                         if (fileIdMatch) {
-                            imageUrl = `https://drive.google.com/uc?export=view&id=${fileIdMatch[0]}`;
+                            imageUrl = `https://lh3.googleusercontent.com/d/${fileIdMatch[0]}=s220`; // Google CDN URL
                         }
                     }
-                    // Ensure the image icon is visible and full image opens on click
+
+                    // Use a placeholder if the image is missing
+                    if (!imageUrl || imageUrl === "N/A") {
+                        imageUrl = "https://via.placeholder.com/40";
+                    }
+
                     td.innerHTML = `
                         <img src="${imageUrl}" alt="Image" style="width: 40px; height: 40px; border-radius: 5px; cursor: pointer;" 
                         onclick="showFullImage('${imageUrl}')">
@@ -51,8 +60,10 @@ document.addEventListener('DOMContentLoaded', async function() {
                 }
                 tableRow.appendChild(td);
             });
+
             tableBody.appendChild(tableRow);
         });
+
     } catch (error) {
         console.error('Error loading Google Sheets data:', error);
     }
@@ -71,16 +82,16 @@ function showFullImage(imageUrl) {
     modal.style.justifyContent = 'center';
     modal.style.alignItems = 'center';
     modal.style.zIndex = '1000';
-    
+
     const img = document.createElement('img');
     img.src = imageUrl;
     img.style.maxWidth = '90%';
     img.style.maxHeight = '90%';
     img.style.borderRadius = '10px';
-    
+
     modal.appendChild(img);
     document.body.appendChild(modal);
-    
+
     // Close modal on click
     modal.onclick = function() {
         document.body.removeChild(modal);
