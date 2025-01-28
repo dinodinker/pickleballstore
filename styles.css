@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -11,7 +10,7 @@ body {
 }
 
 header {
-    background: linear-gradient(90deg, #8D6E63, #4E342E);
+    background: linear-gradient(90deg, #4CAF50, #008CBA);
     color: white;
     text-align: center;
     padding: 20px;
@@ -36,10 +35,6 @@ section:hover {
     transform: scale(1.02);
 }
 
-.table-container {
-    overflow-x: auto;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -57,17 +52,12 @@ th, td {
 }
 
 th {
-    background: #6D4C41;
+    background: #4CAF50;
     color: white;
 }
 
-tr:hover {
-    background-color: #F5F5F5;
-}
-
-/* Buttons */
 button {
-    background: linear-gradient(90deg, #8D6E63, #6D4C41);
+    background: linear-gradient(90deg, #008CBA, #4CAF50);
     color: white;
     border: none;
     padding: 12px;
@@ -78,44 +68,10 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(90deg, #6D4C41, #8D6E63);
+    background: linear-gradient(90deg, #4CAF50, #008CBA);
     transform: scale(1.05);
 }
 
-/* Image Thumbnails */
-.thumbnail {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.thumbnail:hover {
-    transform: scale(1.1);
-}
-
-/* Full Image Modal */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.full-image {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-}
-
-/* Form */
 input, textarea {
     width: 100%;
     padding: 12px;
