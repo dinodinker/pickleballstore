@@ -34,7 +34,14 @@ document.addEventListener('DOMContentLoaded', async function() {
             cleanedRow.forEach((cellData, index) => {
                 const td = document.createElement('td');
                 if (headers[index] === "Image URL") {
-                    td.innerHTML = `<img src="${cellData}" alt="Image" style="width: 80px; height: auto; border-radius: 5px;">`;
+                    let imageUrl = cellData;
+                    if (imageUrl.includes("drive.google.com")) {
+                        const fileId = imageUrl.match(/[-\w]{25,}/);
+                        if (fileId) {
+                            imageUrl = `https://drive.google.com/uc?export=view&id=${fileId[0]}`;
+                        }
+                    }
+                    td.innerHTML = `<img src="${imageUrl}" alt="Image" style="width: 80px; height: auto; border-radius: 5px;">`;
                 } else {
                     td.textContent = cellData;
                 }
