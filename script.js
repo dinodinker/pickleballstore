@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const headerRow = document.createElement('tr');
         headers.forEach(headerText => {
             const th = document.createElement('th');
-            th.textContent = headerText;
+            th.textContent = headerText === "Image URL" ? "Image" : headerText;
             headerRow.appendChild(th);
         });
         tableHead.appendChild(headerRow);
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const tableRow = document.createElement('tr');
             cleanedRow.forEach((cellData, index) => {
                 const td = document.createElement('td');
-                if (headers[index] === "Image URL") {
+                if (headers[index] === "Image") {
                     let imageUrl = cellData;
                     if (imageUrl.includes("drive.google.com")) {
                         const fileId = imageUrl.match(/[-\w]{25,}/);
