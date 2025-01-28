@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    const sheetID = "1C1WMjPcvikenjGzUdOv47l1pUSC759dVYXzb3tsGxs0";  // Replace with your actual Google Sheet ID
+    const sheetID = "YOUR_SHEET_ID";  // Replace with your actual Google Sheet ID
     const sheetName = "Sheet1"; // Change if your sheet has a different name
     const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
 
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const rowData = row.c.map(cell => (cell ? cell.v : 'N/A'));
             const tableRow = document.createElement('tr');
             tableRow.innerHTML = `
+                <td><img src="${rowData[9]}" alt="${rowData[0]}" style="width: 80px; height: auto; border-radius: 5px;"></td>
                 <td>${rowData[0]}</td>
                 <td>${rowData[1]}</td>
                 <td>${rowData[2]}</td>
