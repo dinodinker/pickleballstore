@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    const sheetID = "1C1WMjPcvikenjGzUdOv47l1pUSC759dVYXzb3tsGxs0"; // Your actual Google Sheet ID
+    const sheetID = "1C1WMjPcvikenjGzUdOv47l1pUSC759dVYXzb3tsGxs0";  // Your actual Google Sheet ID
     const sheetName = "Sheet1"; // Change if your sheet has a different name
     const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
 
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             `;
             tableBody.appendChild(tableRow);
         });
-
     } catch (error) {
         console.error('Error loading Google Sheets data:', error);
     }
