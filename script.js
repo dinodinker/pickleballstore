@@ -12,20 +12,21 @@ document.addEventListener('DOMContentLoaded', async function() {
         tableBody.innerHTML = '';
 
         // Ensure first row is treated as a header and removed
-        const headers = rows[0].map(header => header.trim());
+        const headers = rows[0].map(header => header.trim().replace(/"/g, ''));
         const dataRows = rows.slice(1).filter(row => row.length >= headers.length); // Remove empty rows
 
         dataRows.forEach(rowData => {
-            const imageUrl = rowData[headers.indexOf("Image URL")].trim();
-            const name = rowData[headers.indexOf("Name")].trim();
-            const type = rowData[headers.indexOf("Type")].trim();
-            const condition = rowData[headers.indexOf("Condition")].trim();
-            const price = parseFloat(rowData[headers.indexOf("Price")].trim()).toFixed(2);
-            const rentalPrice = parseFloat(rowData[headers.indexOf("Rental Price")].trim()).toFixed(2);
-            const description = rowData[headers.indexOf("Description")].trim();
-            const stock = rowData[headers.indexOf("Stock")].trim();
-            const rented = rowData[headers.indexOf("Rented")].trim();
-            const notes = rowData[headers.indexOf("Notes")].trim();
+            const cleanedRow = rowData.map(cell => cell.trim().replace(/"/g, ''));
+            const imageUrl = cleanedRow[headers.indexOf("Image URL")];
+            const name = cleanedRow[headers.indexOf("Name")];
+            const type = cleanedRow[headers.indexOf("Type")];
+            const condition = cleanedRow[headers.indexOf("Condition")];
+            const price = parseFloat(cleanedRow[headers.indexOf("Price")]).toFixed(2);
+            const rentalPrice = parseFloat(cleanedRow[headers.indexOf("Rental Price")]).toFixed(2);
+            const description = cleanedRow[headers.indexOf("Description")];
+            const stock = cleanedRow[headers.indexOf("Stock")];
+            const rented = cleanedRow[headers.indexOf("Rented")];
+            const notes = cleanedRow[headers.indexOf("Notes")];
             
             const tableRow = document.createElement('tr');
             tableRow.innerHTML = `
