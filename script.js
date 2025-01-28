@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', async function() {
+ocument.addEventListener('DOMContentLoaded', async function() {
     try {
         const response = await fetch('inventory.json');
         const data = await response.json();
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             row.innerHTML = `
                 <td>${item.name}</td>
                 <td>${item.type}</td>
+                <td>${item.condition}</td>
                 <td>$${item.price}</td>
                 <td>$${item.rental_price}</td>
                 <td>${item.description}</td>
