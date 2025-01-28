@@ -1,4 +1,4 @@
-ocument.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function() {
     try {
         const response = await fetch('inventory.json');
         const data = await response.json();
