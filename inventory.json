@@ -2,20 +2,22 @@
     {
         "name": "Vatic Flash",
         "type": "Control",
+        "condition": "New",
         "price": 120,
         "rental_price": 15,
         "description": "Lightweight control paddle with excellent spin.",
-        "stock": 1,
+        "stock": 5,
         "rented": "No",
         "notes": "Great for beginners"
     },
     {
         "name": "Spartus Olympus",
         "type": "Power",
+        "condition": "Used",
         "price": 140,
-        "rental_price": 15,
+        "rental_price": 20,
         "description": "Powerful paddle with a strong carbon face.",
-        "stock": 1,
+        "stock": 3,
         "rented": "Yes",
         "notes": "Recommended for aggressive players"
     }
