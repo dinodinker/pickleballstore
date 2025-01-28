@@ -21,7 +21,7 @@ header {
 
 section {
     width: 90%;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 20px auto;
     background: white;
     padding: 20px;
@@ -41,8 +41,7 @@ table {
     margin-top: 20px;
     border-radius: 8px;
     overflow: hidden;
-    display: block;
-    white-space: nowrap;
+    display: table;
 }
 
 th, td {
@@ -98,7 +97,7 @@ p {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     header {
         font-size: 22px;
         padding: 15px;
@@ -107,7 +106,6 @@ p {
     section {
         width: 95%;
         padding: 15px;
-        overflow-x: auto;
     }
 
     table {
