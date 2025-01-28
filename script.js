@@ -41,7 +41,11 @@ document.addEventListener('DOMContentLoaded', async function() {
                             imageUrl = `https://drive.google.com/uc?export=view&id=${fileId[0]}`;
                         }
                     }
-                    td.innerHTML = `<a href="${imageUrl}" target="_blank"><img src="${imageUrl}" alt="Image" style="width: 40px; height: 40px; border-radius: 5px; cursor: pointer;"></a>`;
+                    // Ensure the image icon is visible and full image opens on click
+                    td.innerHTML = `
+                        <img src="${imageUrl}" alt="Image" style="width: 40px; height: 40px; border-radius: 5px; cursor: pointer;" 
+                        onclick="showFullImage('${imageUrl}')">
+                    `;
                 } else {
                     td.textContent = cellData;
                 }
@@ -53,3 +57,32 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.error('Error loading Google Sheets data:', error);
     }
 });
+
+// Function to show full image in a modal
+function showFullImage(imageUrl) {
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+    modal.style.zIndex = '1000';
+    
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.style.maxWidth = '90%';
+    img.style.maxHeight = '90%';
+    img.style.borderRadius = '10px';
+    
+    modal.appendChild(img);
+    document.body.appendChild(modal);
+    
+    // Close modal on click
+    modal.onclick = function() {
+        document.body.removeChild(modal);
+    };
+}
