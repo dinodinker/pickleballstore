@@ -13,14 +13,16 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // Remove the header row before displaying
         rows.slice(1).forEach(rowData => {
+            if (rowData.length < 10) return; // Ensure correct column count
+            
             const tableRow = document.createElement('tr');
             tableRow.innerHTML = `
                 <td><img src="${rowData[9].trim()}" alt="${rowData[0].trim()}" style="width: 80px; height: auto; border-radius: 5px;"></td>
                 <td>${rowData[0].trim()}</td>
                 <td>${rowData[1].trim()}</td>
                 <td>${rowData[2].trim()}</td>
-                <td>$${rowData[3].trim()}</td>
-                <td>$${rowData[4].trim()}</td>
+                <td>$${parseFloat(rowData[3].trim()).toFixed(2)}</td>
+                <td>$${parseFloat(rowData[4].trim()).toFixed(2)}</td>
                 <td>${rowData[5].trim()}</td>
                 <td>${rowData[6].trim()}</td>
                 <td>${rowData[7].trim()}</td>
