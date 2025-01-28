@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                             imageUrl = `https://drive.google.com/uc?export=view&id=${fileId[0]}`;
                         }
                     }
-                    td.innerHTML = `<img src="${imageUrl}" alt="Image" style="width: 80px; height: auto; border-radius: 5px;">`;
+                    td.innerHTML = `<img src="${imageUrl}" alt="Image" style="width: 40px; height: 40px; border-radius: 5px; cursor: pointer;" onmouseover="this.style.width='200px'; this.style.height='200px';" onmouseout="this.style.width='40px'; this.style.height='40px';">`;
                 } else {
                     td.textContent = cellData;
                 }
