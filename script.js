@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         const table = document.querySelector('#paddleTable');
         const tableHead = table.querySelector('thead');
-        const tableBody = table.querySelector('tbody');
+        const tableBody = document.querySelector('tbody');
         
         tableHead.innerHTML = '';
         tableBody.innerHTML = '';
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     }
                     // Ensure the image icon is visible and full image opens on click
                     td.innerHTML = `
-                        <img src="${imageUrl}" alt="Image" style="width: 40px; height: 40px; border-radius: 5px; cursor: pointer;" 
+                        <img src="${imageUrl}" alt="Image" style="width: 40px; height: 40px; border-radius: 5px; cursor: pointer; object-fit: cover;" 
                         onclick="showFullImage('${imageUrl}')" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';">
                     `;
                 } else {
@@ -76,9 +76,10 @@ function showFullImage(imageUrl) {
     img.src = imageUrl;
     img.style.width = 'auto';
     img.style.height = 'auto';
-    img.style.maxWidth = '90%';
-    img.style.maxHeight = '90%';
+    img.style.maxWidth = '95%';
+    img.style.maxHeight = '95%';
     img.style.borderRadius = '10px';
+    img.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.2)';
     
     modal.appendChild(img);
     document.body.appendChild(modal);
