@@ -35,6 +35,14 @@ section:hover {
     transform: scale(1.02);
 }
 
+/* Left-align specific sections */
+.left-align {
+    text-align: left;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
