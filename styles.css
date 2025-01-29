@@ -9,6 +9,14 @@ body {
     align-items: center;
 }
 
+.left-align {
+    text-align: left;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+
+
 header {
     background: linear-gradient(90deg, #4CAF50, #008CBA);
     color: white;
