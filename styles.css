@@ -17,20 +17,23 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     box-sizing: border-box;
+    position: relative;
 }
 
 .logo {
     height: 60px;
     object-fit: contain;
+    margin-right: 20px;
 }
 
 .header-text {
-    flex-grow: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
     font-size: 24px;
-    margin-right: 60px; /* balances the space taken by the logo on the left */
 }
 
 section {
@@ -123,11 +126,12 @@ p {
     .site-header {
         flex-direction: column;
         align-items: center;
-        text-align: center;
     }
 
     .header-text {
-        margin: 0;
+        position: static;
+        transform: none;
+        margin-top: 10px;
     }
 
     .logo {
